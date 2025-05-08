@@ -6,7 +6,7 @@ It uses the default *echo* API that is installed in APIM on first provisioning.
 
 The REST API is [Gateway Api - Create Or Update](https://learn.microsoft.com/en-us/rest/api/apimanagement/gateway-api/create-or-update?view=rest-apimanagement-2024-05-01&tabs=HTTP)
 
-The [HTTP calls](./http-requests.http) that may be used with the Visual Studio Code REST client are also included in this repository.
+The [HTTP calls](./rest-requests.http) that may be used with the Visual Studio Code REST client are also included in this repository.
 
 ---
 
