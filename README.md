@@ -4,6 +4,8 @@ This guide illustrates how to **add** and **remove** gateways from an API hosted
 
 It uses the default *echo* API that is installed in APIM on first provisioning.
 
+The REST API is [Gateway Api - Create Or Update](https://learn.microsoft.com/en-us/rest/api/apimanagement/gateway-api/create-or-update?view=rest-apimanagement-2024-05-01&tabs=HTTP)
+
 ---
 
 
@@ -24,7 +26,7 @@ Ocp-Apim-Subscription-Key: <subscription-key>
 ```
 
 ## 🔐 Authentication: Get an Access Token
-To interact with the Azure Management API, an OAuth 2.0 token is required. This is obtained using a service principal:
+To interact with the Azure Management API, an OAuth 2.0 token is required. This is obtained using a service principal. The service principal must have sufficient privilages to manage the API Management instance and so should have the correct role assignments prior to getting the access token:
 
 **POST to Azure AD Token Endpoint**:
 ```http
@@ -43,7 +45,7 @@ Extract the Access Token:
 ```
 
 ## ➕Add a Gateway to an API
-To associate a gateway with an API:
+To associate a gateway with an API requires a PUT request
 
 ```http
 PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.ApiManagement/service/{{serviceName}}/gateways/{{gatewayId}}/apis/{{apiId}}?api-version=2024-05-01
