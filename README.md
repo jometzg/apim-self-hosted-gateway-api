@@ -73,8 +73,11 @@ The name of the managed gateway for this URL is *managed*.
 
 This removes the link between the API and the specified gateway.
 
+---
+
 ## ✅ Summary
-Echo requests test connectivity through different gateways.
-AAD token is required for secure API management operations.
-PUT adds a gateway to an API.
-DELETE removes a gateway from an API.
+Crerating an API definition in API Management results in an API that is available on the *Managed* gateway. This is not always what is needed. 
+There is no Azure CLI to manage the adding and removal of gateways from an API definition. However there is a REST endpoint that can achieve the same thing.
+
+1. PUT adds a gateway to an API.
+2. DELETE removes a gateway from an API.
