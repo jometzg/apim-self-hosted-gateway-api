@@ -1,0 +1,48 @@
+### send echo request to echo server
+GET http://localhost:80/echo/resource?param1=sample
+Ocp-Apim-Subscription-Key: <your-subscription-key>
+
+### send echo request to echo server in Azure
+GET http://<your-apim-service-name>.azure-api.net/echo/resource?param1=sample
+Ocp-Apim-Subscription-Key:<your-subscription-key>
+
+
+### create an access token for the API Management service using a service principal
+@clientId = 
+@clientSecret = 
+@tenantId = 
+@resource = https://management.azure.com/
+
+### Get access token
+# @name getToken
+POST https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id={{clientId}}
+&client_secret={{clientSecret}}
+&scope=https%3A%2F%2Fmanagement.azure.com%2F.default
+
+
+### Get access token
+@access_token = {{getToken.response.body.access_token}}
+
+
+### Gateway Api - add the gateway to the API
+@subscriptionId = 
+@resourceGroupName = 
+@serviceName = 
+@gatewayId = 
+@apiId = echo-api
+PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.ApiManagement/service/{{serviceName}}/gateways/{{gatewayId}}/apis/{{apiId}}?api-version=2024-05-01
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+}
+
+@managedGatewayId = Managed
+### remove the managed gateway from the API
+DELETE https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.ApiManagement/service/{{serviceName}}/gateways/{{managedGatewayId}}/apis/{{apiId}}?api-version=2024-05-01
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
