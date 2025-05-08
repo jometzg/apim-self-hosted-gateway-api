@@ -75,6 +75,12 @@ The name of the managed gateway for this URL is *managed*.
 
 This removes the link between the API and the specified gateway.
 
+### Before Managed gateway removal
+![alt text](./apim-added-managed-gateway.png "before gateway removal")
+
+### After Managed gateway removal
+![alt text](./apim-removed-managed-gateway.png "After gateway removal")
+
 ---
 
 ## ✅ Summary
