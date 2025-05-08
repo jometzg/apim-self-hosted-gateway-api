@@ -13,8 +13,8 @@ Two sample requests demonstrate how to send a test request to an echo API. This 
 
 - **Local Gateway Request**:
 ```http
-  GET http://localhost:80/echo/resource?param1=sample
-  Ocp-Apim-Subscription-Key: <subscription-key>
+GET http://localhost:80/echo/resource?param1=sample
+Ocp-Apim-Subscription-Key: <subscription-key>
 ```
 
 - **Managed Gateway Request**:
